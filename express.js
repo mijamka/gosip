@@ -25,4 +25,11 @@ app.use(cors())
 
 app.use(express.static("public"));
 
+app.set('views', path.join(__dirname, 'views/pages/'));
+app.set('view engine', 'ejs');
+
+app.get('/', function(req, res){
+    res.render('index');
+});
+
 export default app
