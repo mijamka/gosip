@@ -13,9 +13,11 @@ const list = async (req, res) => {
     try {
         var users = await User.find(q).select('name email')
         return users
-        } catch (err) {
-        console.log(err)
-        }
+        } catch(err){
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+            }
         }
   
 //function to remove the user from the database
@@ -24,9 +26,11 @@ const remove = async (req, res) => {
         var user = {'name' : req};
         var deletedUser = await User.remove(user)
         res.json(deletedUser)
-        } catch (err) {
-            console.log(err)
-        }
+        } catch(err){
+            return res.status(400).json({
+                error: errorHandler.getErrorMessage(err)
+            })
+            }
 }
 
 export default {
