@@ -4,6 +4,7 @@
 
 //import user schema
 import User from '../models/user.model.js'
+import errorHandler from '../helpers/dbErrorHandler.js'
 
 //function to handle fetching the list of users from the database
 //for safety retrive only usernames and emails

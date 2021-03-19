@@ -41,7 +41,6 @@ const create = async (req,res) => {
         }
     }
 
-
     const list = async (req, res) => {
         var q = {};
         try {
