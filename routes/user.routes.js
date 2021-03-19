@@ -4,8 +4,8 @@
 //Import packages
 import express from 'express'
 import User from '../models/user.model.js'
-import passport from 'passport'
 import userCtrl from '../controllers/user.controller.js'
+import passport from 'passport'
 import LocalStrategy from 'passport-local'
 
 //set routes
@@ -46,15 +46,19 @@ router.post('/auth/signup', (req, res) => {
   });
 });
 
-//router to get the list of user from the database
-router.get('/auth/listusers', isAuthenticatedUser, (req, res) => {
-  let searchQ = '';
-  userCtrl.list(searchQ)
-    .then(users => {
-      res.render('user_list', { users: users });
-    });
-  });
 
+
+//router to get the list of user from the database
+// router.get('/auth/listusers', isAuthenticatedUser, (req, res) => {
+router.get('/auth/listusers',  (req, res) => {
+  var q = {};
+        var users = User.find(q).select('name email')
+        .then(users => {
+      res.render('user_list', { users: users })});
+    });
+
+
+  
   //functionality to sign out handled by the passport package
   //check that the user is logged in in the first place
   router.get('/auth/signout', isAuthenticatedUser, (req, res) => {
@@ -73,6 +77,5 @@ router.get('/auth/listusers', isAuthenticatedUser, (req, res) => {
     });
   });
 
-  
   //export the router
   export default router
