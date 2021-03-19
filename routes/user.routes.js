@@ -73,5 +73,6 @@ router.get('/auth/listusers', isAuthenticatedUser, (req, res) => {
     });
   });
 
+  
   //export the router
   export default router
