@@ -8,14 +8,21 @@ const create = async (req,res) => {
     var is_18 = false;
     var a;
     var ra;
+    if(!req.session.age){
+    }
+    else{
+        is_18 = req.session.age;
+    }
     
     if(req.body.cat =='18+'){
         is_18 = true;
+        req.session.age = is_18;
     } else if (req.body.cat =='18-'){
         is_18 = false; 
+        req.session.age = is_18;
     }
     
-    var click = {
+    let click = {
         category : req.body.cat,
         is_adult : is_18,
     }

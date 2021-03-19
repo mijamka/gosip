@@ -2,8 +2,11 @@
 //Controller for handling fetching user data and deleting users
 //user authentication, registration and login is handled by passport package
 
+//import user schema
 import User from '../models/user.model.js'
 
+//function to handle fetching the list of users from the database
+//for safety retrive only usernames and emails
 const list = async (req, res) => {
     var q = {};
     try {
@@ -13,12 +16,11 @@ const list = async (req, res) => {
         console.log(err)
         }
         }
-       
+  
+//function to remove the user from the database
 const remove = async (req, res) => {
     try {
         var user = {'name' : req};
-        // var user = await User.find({"name" : q})
-        // console.log(user);
         var deletedUser = await User.remove(user)
         res.json(deletedUser)
         } catch (err) {
