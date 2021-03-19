@@ -5,7 +5,7 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="/css/art_list.css" rel="stylesheet" type="text/css">
+  <link href="/css/about.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -13,23 +13,26 @@
 <body id="page-top">
     <div id='main_part'>
 
-    <!-- Include the navbar -->
-    <%- include('../partials/navbar.ejs') %>
+        <!-- Include the navbar -->
+        <%- include('../partials/navbar.ejs') %>
 
-<!-- Main section -->
-  <section id="about">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-8 mx-auto">
-          <h2 style='padding-top: 30%; padding-bottom: 6%;'>About Us</h2>
-          <p class="lead">GO.SIP is a news portal reporting on art, trends, lifestyle, and obviously gossip.</p>
-          <p style='padding-top: 5%; padding-bottom: 10%;'> You can contact us at: gosip@email.com</p>
+        <div id='filly'></div>
+        <!-- Main section -->
+        <section id="about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h2 style='padding-top: 30%; padding-bottom: 6%;'>About Us</h2>
+                        <p class="lead">GO.SIP is a news portal reporting on art, trends, lifestyle, and obviously gossip.</p>
+                        <p style='padding-top: 5%; padding-bottom: 10%;'> You can contact us at: gosip@email.com</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id='foot'>
+            <%- include('../partials/footer.ejs') %>
         </div>
-      </div>
-    </div>
-  </section>
-</div>
-
+  </div>
 
 </body>
 
