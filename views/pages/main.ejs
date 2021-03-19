@@ -1,0 +1,150 @@
+<!-- Bootstrap Template https://getbootstrap.com/docs/4.3/examples/album/ -->
+
+<!-- Use the header from the partials -->
+<%- include('../partials/header.ejs') %>
+
+  <!-- Custom styles for this template -->
+  <link href="/css/main_css.css" rel="stylesheet" type="text/css">
+  <script type="text/javascript"  src="/js/client.js"></script>
+
+</head>
+
+<!-- Body -->
+<body>
+
+    <!-- Include the navbar -->
+    <%- include('../partials/navbar.ejs') %>
+
+  <!-- Page Content -->
+  <div class="container">
+
+    <!-- Depending on the age data parsed include an appropriate content -->
+    <!-- Age restricted/explicit or kids friendly -->
+    <% if (article == 'x') { %>
+      <%- include('../partials/x.ejs') %>
+    <% } else { %>
+      <%- include('../partials/kid.ejs') %>
+      <% } %>
+
+    <!-- Cards with different categories of content -->
+    <!-- Tracking how many times each category has been selected -->
+    <div class="row text-center">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/img/lifestyle.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Lifestyle</h4>
+          </div>
+          <div class="card-footer">
+            <a href="/articles/Lifestyle" class="btn btn-secondary" onclick="check_cat_art('lifestyle');">Read More!</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/img/books.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Books</h4>
+            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p> -->
+          </div>
+          <div class="card-footer">
+            <a href="/articles/Books" class="btn btn-secondary" onclick="check_cat_art('books');">Read More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/img/art.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Art</h4>
+            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p> -->
+          </div>
+          <div class="card-footer">
+            <a href="/articles/Art" class="btn btn-secondary" onclick="check_cat_art('art');">Read More!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="/img/fashion.jpg" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Fashion</h4>
+            <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p> -->
+          </div>
+          <div class="card-footer">
+            <a href="/articles/Fashion" class="btn btn-secondary" onclick="check_cat_art('fashion');">Read More!</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- /.row -->
+
+    <div class="row text-center">
+
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="/img/gossip.jpg" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Gossip</h4>
+            </div>
+            <div class="card-footer">
+              <a href="/articles/Gossip" class="btn btn-secondary" onclick="check_cat_art('gossip');">Read More!</a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="/img/events.jpg" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Events</h4>
+              <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p> -->
+            </div>
+            <div class="card-footer">
+              <a href="/articles/Events" class="btn btn-secondary" onclick="check_cat_art('events');">Read More!</a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="/img/movies.jpg" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Movies</h4>
+              <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p> -->
+            </div>
+            <div class="card-footer">
+              <a href="/articles/Movies" class="btn btn-secondary" onclick="check_cat_art('movies');">Read More!</a>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-3 col-md-6 mb-4">
+          <div class="card h-100">
+            <img class="card-img-top" src="/img/music.jpg" alt="">
+            <div class="card-body">
+              <h4 class="card-title">Music</h4>
+              <!-- <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p> -->
+            </div>
+            <div class="card-footer">
+              <a href="/articles/Music" class="btn btn-secondary" onclick="check_cat_art('music');">Read More!</a>
+            </div>
+          </div>
+        </div>
+  
+      </div>
+      <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
+
+<!-- Include the footer -->
+  <%- include('../partials/footer.ejs') %>
+
+
+</body>
+
+</html>

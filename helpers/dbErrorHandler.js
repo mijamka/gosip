@@ -4,9 +4,9 @@
 Error handling for Mongoose
 */
 const getUniqueErrorMessage = (err) => {
-    let output
+    var output
     try {
-    let fieldName = err.message.substring(err.message.lastIndexOf('.$') + 2,
+    var fieldName = err.message.substring(err.message.lastIndexOf('.$') + 2,
    err.message.lastIndexOf('_1'))
     output = fieldName.charAt(0).toUpperCase() + fieldName.slice(1) + ' already exists'
     } catch (ex) {
@@ -18,7 +18,7 @@ const getUniqueErrorMessage = (err) => {
    * Get the error message from error object
    */
    const getErrorMessage = (err) => {
-    let message = ''
+    var message = ''
     if (err.code) {
     switch (err.code) {
     case 11000:
