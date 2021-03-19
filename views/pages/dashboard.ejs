@@ -1,0 +1,340 @@
+<!-- BOOTSTRAP TEMP: https://colorlib.com/wp/template/bootstrap-sidebar-01/ -->
+
+<%- include('../partials/header.ejs') %>
+<%- include('../partials/header_admin.ejs') %>
+  </head>
+  <body>
+    <%- include('../partials/nav_admin.ejs') %>
+		
+
+	        
+
+        <h2 class="mb-4">Statistics</h2>
+       
+        <div>
+            <h4>Number of visits per age group</h4>
+            <canvas id='age_chart' height="60%"></canvas>
+        </div>
+        <div>
+            <h4>Number of visits for each age group over time</h4>
+            <canvas id='timeline'  height="60%"></canvas>
+        </div>
+        <div>
+            <h4>Number of times the category was selected by each age group</h4>
+            <canvas id='cat_chart' height="60%"></canvas>
+        </div>
+    
+        <script>
+            var clicks = '<%- JSON.stringify(clicks) %>' ;
+            clicks = JSON.parse(clicks);
+            var under = (clicks.filter(clicks => clicks.category == '18-'));
+            var under_no = Object.keys(under).length;
+        
+            var adults = (clicks.filter(clicks => clicks.category == '18+'));
+            var adults_no = Object.keys(adults).length;
+        </script>
+        <script>
+            // https://www.chartjs.org/docs/latest/
+            var ctx = document.getElementById('age_chart').getContext('2d');
+            // const xlabels = [];
+            var age_chart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Underage', 'Adults'],
+                    // labels: xlabels,
+                    datasets: [{
+                        label: ['Underage'],
+                        data: [under_no, adults_no],
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.2)',
+                            'rgba(54, 162, 235, 0.2)',
+                        ],
+                        borderColor: [
+                        ],
+                    },
+                {
+                    label: ['Adults'],
+                    backgroundColor: ['rgba(54, 162, 235, 0.2)'],
+                }]
+                },
+                options: {
+                    scales: {
+                        xAxes:[{
+                            gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }   ,
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 0.1,
+                    }   ,
+                            ticks: {
+                            stepSize: 20,
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+            </script>
+        
+        <script>
+            var under_td = [];
+            var utd = [];
+            var sutd = [];
+            var satd = [];
+            var atd = [];
+            var adults_td = [];
+            var new_data;
+            var x;
+            var y;
+        
+            sutd  = under.sort((a,b) =>  moment(a.createdAt).format('YYYYMMDD') - moment(b.createdAt).format('YYYYMMDD'));
+            satd  = adults.sort((a,b) =>  moment(a.createdAt).format('YYYYMMDD') - moment(b.createdAt).format('YYYYMMDD'));
+        
+            for(var i=0; i< under_no; i++){
+                
+                x = moment(sutd[i].createdAt).format("YYYY-M-D");
+                y = sutd[i]._id;
+                new_data = { x, y }
+                under_td.push(new_data);
+            }
+        
+            
+        
+        
+            let under_counter = {}
+            under_td.forEach(function(obj) {
+            var key = obj.x
+            under_counter[key] = (under_counter[key] || 0) + 1
+            })
+            
+            for (const [key, value] of Object.entries(under_counter)) {
+                x = key;
+                x = moment(x).format('YYYY-M-D');
+                y = value;
+                new_data = {x, y};
+                utd.push(new_data);
+        }
+        
+        
+        
+        function getDaysBetweenDates(startDate) {
+            let dates = [];
+            var end = new Date();
+            end.setDate(end.getDate() + 3);
+            var theDate = new Date(startDate);
+            while (theDate < end) {
+                var newDate = moment(theDate).format('YYYY-M-D');
+                dates.push(newDate);
+                theDate.setDate(theDate.getDate() + 1);
+          }
+        
+          return dates;
+            }
+        
+        // var current_date=  moment((new Date()).valueOf());
+        var start_of_year = moment().startOf('year').format('YYYY-M-D');
+        var date_arr = getDaysBetweenDates(start_of_year);
+        
+        
+        var utf = [];
+        var temp;
+        
+        for(var i = 0; i< date_arr.length; i++){
+            temp = {x: date_arr[i], y:0};
+            utd.forEach(function (obj){
+            if(obj.x === date_arr[i]){
+                temp.y = obj.y;
+            }
+            });
+            utf.push(temp);
+        }
+        
+        
+        sutf  = utf.sort((a,b) =>  moment(a.x).format('YYYYMMDD') - moment(b.x).format('YYYYMMDD'));
+        
+        
+        
+            for(var i=0; i< adults_no; i++){
+                
+                x = moment(satd[i].createdAt).format("YYYY-M-D");
+                y = satd[i]._id;
+                // new_data = { x, y }
+                adults_td.push({x, y});
+            }
+        
+            let adults_counter = {}
+            adults_td.forEach(function(obj) {
+            var key = obj.x
+            adults_counter[key] = (adults_counter[key] || 0) + 1
+            })
+        
+            for (const [key, value] of Object.entries(adults_counter)) {
+                x = key;
+                x = moment(x).format('YYYY-M-D');
+                y = value;
+                // new_data = {x, y};
+                atd.push({x, y});
+        }
+        
+        
+        var atf = [];
+        
+        for (var i = 0; i< date_arr.length; i++){
+            temp = {x: date_arr[i], y:0};
+            atd.forEach(function (obj){
+            if(obj.x === date_arr[i]){
+                temp.y = obj.y;
+            }
+            });
+            atf.push(temp);
+        }
+        
+        
+        var satf  = atf.sort((a,b) =>  moment(a.x).format('YYYYMMDD') - moment(b.x).format('YYYYMMDD'));
+
+        
+            // https://www.chartjs.org/docs/latest/
+            var canva = document.getElementById('timeline');
+            var graphParams = {
+            type:"line",
+            data:{
+                
+                datasets: [
+                    {
+                    pointRadius: 2,
+                    label:"Underage",
+                    spanGaps: false,
+                    data:sutf,
+                    borderColor:'rgba(255, 99, 132, 0.2)',
+                    backgroundColor:'transparent',
+                },
+                {
+                    pointRadius: 2,
+                    label:"Adults",
+                    spanGaps: false,
+                    data:satf,
+                    borderColor:'rgba(54, 162, 235, 0.2)',
+                    backgroundColor:'transparent',
+                }],
+            },
+            options: {
+                
+                showLines: true,
+                distribution: 'series',
+                bounds: 'ticks',
+                scales: {
+                    xAxes: [{
+                        gridLines: {
+                            lineWidth: 0.1,
+                    }   ,
+                        type: 'time',
+                        time: {
+                            unit: 'day'
+                        },
+                        distribution: 'series',
+                    }],
+                    yAxes: [{
+                        gridLines: {
+                            lineWidth: 0.1,
+                    }   ,
+                      ticks: {
+                        stepSize: 20,
+                        min: 0,
+                        suggestedMax: 80,
+                        source: 'auto',
+                      }
+                    }]
+                }
+            }
+        }
+            
+        
+        ctx2 = new Chart(canva, graphParams);
+            </script>
+        
+        
+        <script>
+        
+            var cat_names = [];
+            for (var i =0; i < Object.keys(clicks).length; i++){
+                if((clicks[i].category != '18-') && (clicks[i].category != '18+')){
+                    if (!(cat_names.includes(clicks[i].category))){
+                        cat_names.push(clicks[i].category);
+                }
+            }
+        }
+        
+        var uds = [];
+        var ads = [];
+        
+        
+        for (var i=0; i<cat_names.length; i++){
+            var ud = (clicks.filter(clicks => (clicks.category == cat_names[i]) &&  clicks.is_adult == false ));
+            var udn =  Object.keys(ud).length;
+            var ad = (clicks.filter(clicks => (clicks.category == cat_names[i]) &&  clicks.is_adult == true ));
+            var adn =  Object.keys(ad).length;
+        
+            uds.push(udn);
+            ads.push(adn);
+        }
+        
+        
+            // https://www.chartjs.org/docs/latest/
+            var ctx3 = document.getElementById('cat_chart').getContext('2d');
+            // const xlabels = [];
+            var cat_chart = new Chart(ctx3, {
+                type: 'bar',
+                data: {
+                    labels: [cat_names[0], cat_names[1], cat_names[2], cat_names[3], cat_names[4], cat_names[5], cat_names[6], cat_names[7]],
+                    // labels: xlabels,
+                    datasets: [
+                {
+                    label: "Underage",
+                    borderColor:'rgba(255, 99, 132, 0.2)',
+                    backgroundColor:'rgba(255, 99, 132, 0.2)',
+                    data: [uds[0], uds[1], uds[2], uds[3], uds[4], uds[5], uds[6], uds[7], uds[8]],
+                },
+                {
+                    label: "Adults",
+                    borderColor:'rgba(54, 162, 235, 0.2)',
+                    backgroundColor:'rgba(54, 162, 235, 0.2)',
+                    data: [ads[0], ads[1], ads[2], ads[3], ads[4], ads[5], ads[6], ads[7], ads[8]],
+                }
+            ]
+                },
+                options: {
+                    scales: {
+                        xAxes: [{
+                            gridLines: {
+                        color: "rgba(0, 0, 0, 0)",
+                    }   ,
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                lineWidth: 0.1,
+                    }   ,
+                      ticks: {
+                        stepSize: 10,
+                        min: 0,
+                        suggestedMax: 30,
+                      }
+                    }]
+                    }
+                }
+            });
+            </script>
+        
+    </div>
+
+
+
+
+		</div>
+
+        <%- include('../partials/footer_admin.ejs') %>
+
+
+  </body>
+</html>

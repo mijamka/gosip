@@ -12,6 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "chart.js": "^2.9.4",
+    "chartjs-adapter-moment": "^0.1.2",
     "compression": "^1.7.4",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
@@ -25,6 +27,7 @@
     "helmet": "^4.4.1",
     "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
+    "moment": "^2.29.1",
     "mongoose": "^5.11.15",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1",
