@@ -1,2 +1,76 @@
+<!-- Custom header in this document -->
+<!-- Bootstrap template https://startbootstrap.com/previews/one-page-wonder -->
 
-<p>Lets roll </p>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Miriam Wojcik">
+    <link rel="icon" href="/img/icon.ico">
+  
+    <title>GO.SIP</title>
+
+    <!-- Get bootstrap -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+
+    <!-- Font from google fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Coda&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap core CSS & JS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+
+    <!-- Custom styles for the index page -->
+    <link href= '/css/my_css.css' rel="stylesheet" type="text/css">
+
+    <!-- Client side script -->
+    <script type="text/javascript"  src="/js/client.js"></script>
+    
+  </head>
+
+  <!-- Body of the page. Bootstrap template layout -->
+  <body>
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+              <h3 class="masthead-brand">GO.SIP</h3>
+            </div>
+          </div>
+
+          <!-- Main text -->
+          <div class="inner-cover">
+            <h1 class="cover-heading">Welcome</h1>
+            <p class="lead">At GO.SIP some of the tea might be too hot for a young audience.</p>
+            <p class="lead">Please confirm your age, so we can select an appropriate content for You!</p>
+            <p class="lead"></p>
+
+            <!-- The buttons used for the AB testing tracking the users' age -->
+             <form id="theForm" method="POST">
+             <a href="/main/18-" class="btn btn-lg btn-secondary" id='18-' onclick="check_cat('18-');">Me<18</a> 
+             <a href="/main/18+" class="btn btn-lg btn-secondary" id='18+' onclick="check_cat('18+');">I'm over 18</a>
+            </form>
+          </div>
+
+          <!-- Footer -->
+          <div class="mastfoot">
+            <div class="inner">
+              <p>GO.SIP is a news portal reporting on art, trends, lifestyle, and obviously gossip.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+  <!-- Bootstrap core JavaScript -->
+  <script src="/css/vendor/jquery/jquery.min.js"></script>
+  <script src="/css/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  </body>
+</html>
