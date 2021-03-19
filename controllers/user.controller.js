@@ -15,7 +15,7 @@ const list = async (req, res) => {
         var users = await User.find(q).select('name email')
         return users
         } catch (err) {
-            return json(err)
+            return err
         }
         }
   
@@ -26,7 +26,7 @@ const remove = async (req, res) => {
         var deletedUser = await User.remove(user)
         res.json(deletedUser)
         } catch (err) {
-            return json(err)
+            return err
         }
 }
 
