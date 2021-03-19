@@ -1,0 +1,15 @@
+<!-- Flash mssges -->
+
+<!-- Success flash -->
+<% if(success_msg && success_msg != '') { %>
+<div class ='alert alert-success'> <%= success_msg %> </div>
+
+<!-- Error msg when registering new user -->
+<% } else if (error_msg && error_msg != '') { %>
+<div class ='alert alert-danger'> <%= error_msg %> </div>
+<% } %>
+
+<!-- General error msg -->
+<% if (error && error != '') { %>
+    <div class ='alert alert-danger'> <%= error %> </div>
+    <% } %>
