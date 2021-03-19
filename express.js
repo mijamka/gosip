@@ -54,9 +54,7 @@ app.use((req, res, next)=>{
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
-//use the cookie parser to acces data from the cookies
 app.use(cookieParser())
-
 app.use(compress())
 
 // secure apps by setting various HTTP headers
@@ -66,6 +64,9 @@ app.use(helmet.contentSecurityPolicy());
 // enable CORS - Cross Origin Resource Sharing
 app.use(cors())
 
+//use public folder with the static files
+app.use(express.static("public"));
+
 //passport authentication set up
 //use the username (name) as a unique identifier
 app.use(passport.initialize());
@@ -73,6 +74,9 @@ app.use(passport.session());
 passport.use(new LocalStrategy({usernameField : 'name'}, User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+//use the cookie parser to acces data from the cookies
+app.use(cookieParser())
 
 //set up the content security policy to self
 //use helments security policy to prevent errors
@@ -84,9 +88,6 @@ app.use(
     },
   })
 );
-
-//use public folder with the static files
-app.use(express.static("public"));
 
 //set up the routers
 app.use('/', userRoutes)
