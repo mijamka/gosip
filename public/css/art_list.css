@@ -6,6 +6,7 @@
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
  */
 
+
  header {
     padding: 156px 0 100px;
     background: linear-gradient(
@@ -24,22 +25,18 @@
     font-size: 2.5rem;
   }
 
+
   section {
-    padding: 150px 0;
+    padding: 160px 0;
     
   }
 
 
-/* Media specific styling */
-@media only screen and (min-width: 656px){
-#main_part{
-  min-height: calc(86vh);
-}
-}
-
-@media only screen and (max-width: 655px){
   #main_part{
-    min-height: calc(81vh);
+    height: 88vh;
   }
+  #foot{
+    height: 20vh;
   }
+  
   
