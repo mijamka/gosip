@@ -1,0 +1,57 @@
+/* CSS for the main page */
+
+/*!
+ * Start Bootstrap - Heroic Features (https://startbootstrap.com/template/heroic-features)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-heroic-features/blob/master/LICENSE)
+ */
+ 
+ body {
+    padding-top: 56px;
+  }
+  
+  /* Logo font */
+  .navbar-brand{
+    font-family: coda;
+    font-size: 2.5rem;
+  }
+
+
+#con{
+        position: relative;
+      
+}
+
+/* Display the main picture as a block on the 18+ main page*/
+  #x{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Display the main picture as a block on the kids friendly page */
+  #kid{
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+/* Overlay for image */
+  #overlay{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+    rgba(71, 61, 61, 0.555),
+    rgba(179, 58, 58, 0.66)
+  ), no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+  

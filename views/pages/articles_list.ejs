@@ -1,0 +1,55 @@
+<!-- The page with a list of articles within the category -->
+<!-- Not fully implemented! -->
+
+<!-- Include the header -->
+<%- include('../partials/header.ejs') %>
+
+<!-- Bootstrap  -->
+<link href="/css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+  <!-- Custom styles for this template -->
+  <link href="/css/art_list.css" rel="stylesheet" type="text/css">
+
+</head>
+
+<!-- Body -->
+<body id="page-top">
+
+    <!-- Include the navbar -->
+  <div id='main_part'>
+    <%- include('../partials/navbar.ejs') %>
+
+    <!-- Display the name of the category selected by the user -->
+  <header class="bg-primary text-white">
+    <div class="container text-center">
+      <h1><%= category %></h1>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mx-auto">
+          <h2>Oops...</h2>
+
+          <!-- If the category selected was the age restricted materials then display a warning -->
+          <% if (deny == true) { %>
+            <p>This content is age restricted</p><p class="lead"> We still have plenty of other articles for you!</p>
+
+            <!-- Display the msg that website in building. In the future implement a list of articles -->
+          <% } else { %>
+            <p >Here should be a list of the <%= category %> articles, but we have not published any yet.</p><p class="lead"> Stay tuned!</p>
+            <% } %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+  <%- include('../partials/footer.ejs') %>
+
+
+</body>
+
+</html>
+

@@ -1,0 +1,45 @@
+/* CSS for the list of articles page */
+
+/*!
+ * Start Bootstrap - Scrolling Nav (https://startbootstrap.com/template/scrolling-nav)
+ * Copyright 2013-2020 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-scrolling-nav/blob/master/LICENSE)
+ */
+
+ header {
+    padding: 156px 0 100px;
+    background: linear-gradient(
+        rgba(71, 61, 61, 0.555),
+        rgba(71, 61, 61, 0.555)
+      ), url(../img/oops.jpg) no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+  }
+  
+  /* Change the font of the navbar */
+  .navbar-brand{
+    font-family: coda;
+    font-size: 2.5rem;
+  }
+
+  section {
+    padding: 150px 0;
+    
+  }
+
+
+/* Media specific styling */
+@media only screen and (min-width: 656px){
+#main_part{
+  min-height: calc(86vh);
+}
+}
+
+@media only screen and (max-width: 655px){
+  #main_part{
+    min-height: calc(81vh);
+  }
+  }
+  
