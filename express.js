@@ -12,6 +12,7 @@ import mongoose from 'mongoose'
 import crypto from 'crypto'
 import cors from 'cors'
 import helmet from 'helmet'
+import counterRoutes from './routes/counter.routes.js'
 
 const __dirname = path.resolve();
 const app = express();
@@ -24,6 +25,7 @@ app.use(helmet())
 app.use(cors())
 
 app.use(express.static("public"));
+app.use('/', counterRoutes)
 
 app.set('views', path.join(__dirname, 'views/pages/'));
 app.set('view engine', 'ejs');
