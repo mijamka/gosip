@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --unhandled-rejections=strict server.js"
+    "start": "node server.js"
   },
   "author": "Miriam Wojcik 1904953",
   "license": "ISC",
