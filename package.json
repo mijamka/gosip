@@ -1,0 +1,19 @@
+{
+  "name": "gosip",
+  "version": "1.0.0",
+  "description": "ABtesting news website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mijamka/gosip.git"
+  },
+  "author": "Miriam Wojcik 1904953",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mijamka/gosip/issues"
+  },
+  "homepage": "https://github.com/mijamka/gosip#readme"
+}
